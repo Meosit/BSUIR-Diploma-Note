@@ -1,0 +1,16 @@
+\newpage
+\thispagestyle{plain}
+
+% Зачем: чтобы не было большого вертикального отступа сверху.
+\setlength{\cftbeforetoctitleskip}{-2.9em}
+
+% Зачем: Содержание пишется полужирным шрифтом, по центру всеми заглавными буквами
+% Почему: Пункт 2.2.7 Требований по оформлению пояснительной записки.
+\renewcommand \contentsname {\centerline{\bfseries\normalsize{\MakeUppercase{Содержание}}}}
+
+% Зачем: Не захламлять основной файл
+{
+\normalsize\selectfont
+\tableofcontents
+\newpage
+}
