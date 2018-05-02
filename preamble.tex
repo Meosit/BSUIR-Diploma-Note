@@ -599,3 +599,8 @@
 
 % Чтобы посчитать общее число страниц.
 \usepackage{lastpage,refcount}
+
+% По гостам 2018 отступ номера страницы от нижнего края должен быть 1.7см
+\setlength{\footskip}{\paperheight
+  -(1in+\voffset+\topmargin+\headheight+\headsep+\textheight)
+  -1.7cm}
