@@ -1,0 +1,186 @@
+\input{sections/06_economics_initial_data}
+
+\FPeval{\totalProgramSizeCorrected}{\totalProgramSize}
+\newcommand{\totallocfactor}{\num{\totalProgramSizeCorrected}}
+
+\newcommand{\additionalcomplexityfactor}{\num{\additionalComplexity}}
+\FPeval{\complexityFactor}{clip(1 + \additionalComplexity)}
+\newcommand{\complexityfactor}{\num{\complexityFactor}}
+
+\newcommand{\stdmodulesfactor}{\num{\stdModuleUsageFactor}}
+\newcommand{\noveltyfactor}{\num{\noveltyFactor}}
+
+\FPeval{\adjustedManDaysExact}{clip( \normativeManDays * \complexityFactor * \stdModuleUsageFactor * \noveltyFactor )}
+\FPround{\adjustedManDays}{\adjustedManDaysExact}{0}
+\newcommand{\normativelaboriousnessfactor}{\num{\normativeManDays}}
+\newcommand{\totallaboriousnessfactor}{\num{\adjustedManDays}}
+
+
+\FPeval{\workingDaysInYear}{ clip( \daysInYear - \redLettersDaysInYear - \weekendDaysInYear - \vacationDaysInYear ) }
+\newcommand{\daysinyearfactor}{\num{\daysInYear}}
+\newcommand{\holidaysfactor}{\num{\redLettersDaysInYear}}
+\newcommand{\weekendsfactor}{\num{\weekendDaysInYear}}
+\newcommand{\vacationdaysfactor}{\num{\vacationDaysInYear}}
+\newcommand{\effectivetimefundfactor}{\num{\workingDaysInYear}}
+
+\FPeval{\requiredNumberOfProgrammers}{3} % Количество разработчиков
+\newcommand{\developersnumberfactor}{\num{\requiredNumberOfProgrammers}}
+\FPeval{\developmentTimeYearsExact}{\adjustedManDays / (\requiredNumberOfProgrammers * \workingDaysInYear)}
+\FPround{\developmentTimeYears}{\developmentTimeYearsExact}{2}
+\newcommand{\developmenttimeyearsfactor}{\num{\developmentTimeYears}}
+\FPeval{\developmentTimeMonthsExact}{\developmentTimeYearsExact * 12}
+\FPround{\developmentTimeMonths}{\developmentTimeMonthsExact}{1}
+\newcommand{\developmenttimemonthsfactor}{\num{\developmentTimeMonths}}
+\FPeval{\developmentTimeDaysExact}{\developmentTimeYearsExact * \daysInYear}
+\FPround{\developmentTimeDays}{\developmentTimeDaysExact}{0}
+\newcommand{\developmenttimefactor}{\num{\developmentTimeDays}}
+
+\FPeval{\developertimefund}{round(\developmentTimeDays / \requiredNumberOfProgrammers,0)}
+\newcommand{\developertimefundvalue}{\num{\developertimefund}}
+
+\FPeval{\employeeAMonthExact}{\firstratetariff * 3.98}
+\FPeval{\employeeBMonthExact}{\firstratetariff * 3.48}
+\FPeval{\employeeCMonthExact}{\firstratetariff * 2.65}
+\FPeval{\employeeAHourExact}{\employeeAMonthExact / \averagehourspermonth}
+\FPeval{\employeeBHourExact}{\employeeBMonthExact / \averagehourspermonth}
+\FPeval{\employeeCHourExact}{\employeeCMonthExact / \averagehourspermonth}
+\FPround{\employeeAMonth}{\employeeAMonthExact}{2}
+\FPround{\employeeBMonth}{\employeeBMonthExact}{2}
+\FPround{\employeeCMonth}{\employeeCMonthExact}{2}
+\FPround{\employeeAHour}{\employeeAHourExact}{2}
+\FPround{\employeeBHour}{\employeeBHourExact}{2}
+\FPround{\employeeCHour}{\employeeCHourExact}{2}
+\newcommand{\employeeamonthwage}{\num{\employeeAMonth}}
+\newcommand{\employeebmonthwage}{\num{\employeeBMonth}}
+\newcommand{\employeecmonthwage}{\num{\employeeCMonth}}
+\newcommand{\employeeahourwage}{\num{\employeeAHour}}
+\newcommand{\employeebhourwage}{\num{\employeeBHour}}
+\newcommand{\employeechourwage}{\num{\employeeCHour}}
+
+\newcommand{\firstratetariffvalue}{\num{\firstratetariff}}
+\newcommand{\averagehourspermonthvalue}{\num{\averagehourspermonth}}
+\newcommand{\hourspershiftvalue}{\num{\hourspershift}}
+\newcommand{\bonusratevalue}{\num{\bonusrate}}
+
+\FPeval{\basewageExact}{(\employeeAHour + \employeeBHour + \employeeCHour) * \hourspershift * \developertimefund * \bonusrate}
+\FPround{\basewage}{\basewageExact}{2}
+\newcommand{\basewagevalue}{\num{\basewage}}
+
+\newcommand{\additionalwageratevalue}{\num{\additionalwagerate}\%}
+\FPeval{\additionalwage}{round(\basewage * \additionalwagerate / 100, 2)}
+\newcommand{\additionalwagevalue}{\num{\additionalwage}}
+
+\FPeval{\ssfcharges}{round((\basewage + \additionalwage) * \ssfrate / 100, 2)}
+\FPeval{\insurancecharges}{round((\basewage + \additionalwage) * \insurancerate / 100, 2)}
+\newcommand{\ssfchargesvalue}{\num{\ssfcharges}}
+\newcommand{\ssfratevalue}{\num{\ssfrate}\%}
+\newcommand{\insurancechargesvalue}{\num{\insurancecharges}}
+\newcommand{\insuranceratevalue}{\num{\insurancerate}\%}
+
+\FPeval{\consumablescharges}{round(\basewage * \consumablesrate / 100, 2)}
+\newcommand{\consumablesratevalue}{\num{\consumablesrate}\%}
+\newcommand{\consumableschargesvalue}{\num{\consumablescharges}}
+
+\FPeval{\machinetimecharges}{round(\machinehourprice * \totalProgramSize / 100 * \machinetimerate * \machinetimereductionrate, 2)}
+\newcommand{\machinetimechargesvalue}{\num{\machinetimecharges}}
+\newcommand{\machinetimeratevalue}{\num{\machinetimerate}\%}
+\newcommand{\machinetimereductionratevalue}{\num{\machinetimereductionrate}}
+\newcommand{\machinehourpricevalue}{\num{\machinehourprice}}
+
+\FPeval{\businesstripcharges}{round(\basewage * \businesstriprate / 100, 2)}
+\newcommand{\businesstripratevalue}{\num{\businesstriprate}\%}
+\newcommand{\businesstripchargesvalue}{\num{\businesstripcharges}}
+
+\FPeval{\othercharges}{round(\basewage * \otherchargesrate / 100, 2)}
+\newcommand{\otherchargesratevalue}{\num{\otherchargesrate}\%}
+\newcommand{\otherchargesvalue}{\num{\othercharges}}
+
+\FPeval{\overheadcharges}{round(\basewage * \overheadrate / 100, 2)}
+\newcommand{\overheadratevalue}{\num{\overheadrate}\%}
+\newcommand{\overheadvalue}{\num{\overheadcharges}}
+
+\FPeval{\totalcharges}{\basewage + \additionalwage + \ssfcharges + \insurancecharges + \consumablescharges + \machinetimecharges + \businesstripcharges + \othercharges + \overheadcharges}
+\FPeval{\totalchargesclipped}{clip(\totalcharges)}
+\newcommand{\totalchargesvalue}{\num{\totalchargesclipped}}
+
+\FPeval{\profitability}{round(\totalcharges * \profitabilityrate / 100, 2)}
+\newcommand{\profitabilityratevalue}{\num{\profitabilityrate}\%}
+\newcommand{\profitabilityvalue}{\num{\profitability}}
+
+\FPeval{\netprice}{clip(\totalcharges + \profitability)}
+\newcommand{\netpricevalue}{\num{\netprice}}
+
+\FPeval{\vat}{round(\netprice * \vatrate / 100, 2)}
+\newcommand{\vatvalue}{\num{\vat}}
+\newcommand{\vatratevalue}{\num{\vatrate}\%}
+
+\FPeval{\sellingprice}{clip(\netprice + \vat)}
+\newcommand{\sellingpricevalue}{\num{\sellingprice}}
+
+\FPeval{\deploymentcharges}{round(\totalcharges * \deploymentrate / 100, 2)}
+\newcommand{\deploymentratevalue}{\num{\deploymentrate}\%}
+\newcommand{\deploymentchargesvalue}{\num{\deploymentcharges}}
+
+\FPeval{\maintenancecharges}{round(\totalcharges * \maintenancerate / 100, 2)}
+\newcommand{\maintenanceratevalue}{\num{\maintenancerate}\%}
+\newcommand{\maintenancechargesvalue}{\num{\maintenancecharges}}
+
+\FPeval{\netprofitability}{round(\profitability * (100 - \profittaxrate) / 100, 2)}
+\newcommand{\netprofitabilityvalue}{\num{\netprofitability}}
+
+\FPeval{\capitalinvestment}{clip(\maintenancecharges + \deploymentcharges + \sellingprice)}
+\newcommand{\capitalinvestmentvalue}{\num{\capitalinvestment}}
+
+\FPeval{\wageeconomypertask}{round(\averagewage * (\baselabourisness - \newlabourisness) / \averagehourspermonth, 2)}
+\newcommand{\wageeconomypertaskvalue}{\num{\wageeconomypertask}}
+\newcommand{\averagewagevalue}{\num{\averagewage}}
+\newcommand{\baselabourisnessvalue}{\num{\baselabourisness}}
+\newcommand{\newlabourisnessvalue}{\num{\newlabourisness}}
+
+\FPeval{\taskscount}{clip(\usesperday * \daysInYear)}
+\newcommand{\taskscountvalue}{\num{\taskscount}}
+\newcommand{\usesperdayvalue}{\num{\usesperday}}
+
+\FPeval{\wageeconomy}{clip(\wageeconomypertask * \taskscount)}
+\newcommand{\wageeconomyvalue}{\num{\wageeconomy}}
+
+\FPeval{\totalwageeconomy}{round(\wageeconomy * (100 + \bonusrate) / 100,2)}
+\newcommand{\totalwageeconomyvalue}{\num{\totalwageeconomy}}
+
+\FPeval{\downtimecharges}{round((\basedowntime - \newdowntime) * \planserviceworktime * \downtimeprice / 60,2)}
+\newcommand{\downtimechargesvalue}{\num{\downtimecharges}}
+\newcommand{\basedowntimevalue}{\num{\basedowntime}}
+\newcommand{\newdowntimevalue}{\num{\newdowntime}}
+\newcommand{\downtimepricevalue}{\num{\downtimeprice}}
+\newcommand{\planserviceworktimevalue}{\num{\planserviceworktime}}
+
+\FPeval{\totaleconomy}{clip(\totalwageeconomy + \downtimecharges)}
+\newcommand{\totaleconomyvalue}{\num{\totaleconomy}}
+
+\FPeval{\usernetprofit}{round(\totaleconomy * (1 - \profittaxrate / 100),2)}
+\newcommand{\profittaxratevalue}{\num{\profittaxrate}\%}
+\newcommand{\usernetprofitvalue}{\num{\usernetprofit}}
+
+\FPeval{\usernetprofityearone}{round(\usernetprofit * 0.8696,2)}
+\newcommand{\usernetprofityearonevalue}{\num{\usernetprofityearone}}
+\FPeval{\usernetprofityeartwo}{round(\usernetprofit * 0.7561,2)}
+\newcommand{\usernetprofityeartwovalue}{\num{\usernetprofityeartwo}}
+\FPeval{\usernetprofityearthree}{round(\usernetprofit * 0.6575,2)}
+\newcommand{\usernetprofityearthreevalue}{\num{\usernetprofityearthree}}
+
+\FPeval{\excessovercostsyearzero}{clip(-\capitalinvestment)}
+\newcommand{\excessovercostsyearzerovalue}{\num{\excessovercostsyearzero}}
+\FPeval{\excessovercostsyearone}{clip(\usernetprofityearone)}
+\newcommand{\excessovercostsyearonevalue}{\num{\excessovercostsyearone}}
+\FPeval{\excessovercostsyeartwo}{clip(\usernetprofityeartwo)}
+\newcommand{\excessovercostsyeartwovalue}{\num{\excessovercostsyeartwo}}
+\FPeval{\excessovercostsyearthree}{clip(\usernetprofityearthree)}
+\newcommand{\excessovercostsyearthreevalue}{\num{\excessovercostsyearthree}}
+
+\FPeval{\excessovercostswithtimingyearone}{clip(\excessovercostsyearzero + \usernetprofityearone)}
+\newcommand{\excessovercostswithtimingyearonevalue}{\num{\excessovercostswithtimingyearone}}
+\FPeval{\excessovercostswithtimingyeartwo}{clip(\excessovercostswithtimingyearone + \usernetprofityeartwo)}
+\newcommand{\excessovercostswithtimingyeartwovalue}{\num{\excessovercostswithtimingyeartwo}}
+\FPeval{\excessovercostswithtimingyearthree}{clip(\excessovercostswithtimingyeartwo + \usernetprofityearthree)}
+\newcommand{\excessovercostswithtimingyearthreevalue}{\num{\excessovercostswithtimingyearthree}}
+
