@@ -27,3 +27,4 @@ echo ###########################################################################
 echo Stage 5 - cleanup
 echo ...
 call clean.bat
+echo Completed at %DATE% %TIME%
