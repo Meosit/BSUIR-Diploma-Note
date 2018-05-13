@@ -76,3 +76,24 @@
 <<Что-нибудь в кавычках>>
 Тире -- это так.
 Неразрывные~пробелы~в~предолжении.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%      Long table
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+    \begin{longtable}{
+    | >{\centering}m{0.5\textwidth}
+    | >{\centering\arraybackslash}m{0.5\textwidth}|}
+\caption{Основные классы и методы пакета <<service>>}
+\label{tbl:design:database:reference}\\
+\hline Класс & Описание\\\hline \endfirsthead
+\caption*{Продолжение таблицы~\ref{tbl:design:database:reference}}\\\hline
+\centering 1 & \centering\arraybackslash 2 \\\hline \endhead
+    \hline
+    \endfoot
+
+
+
+    \end{longtable}
+\end{center}
