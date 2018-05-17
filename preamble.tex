@@ -393,6 +393,19 @@
 
 \renewcommand{\lstlistingname}{Листинг}
 
+\lstdefinestyle{standard}{
+xleftmargin=0ex,
+extendedchars=\true,
+language={},
+morekeywords={},
+basicstyle=\footnotesize\ttfamily,
+breaklines=true,
+columns=fullflexible,
+escapeinside=``,
+escapebegin=\begin{russian}\commentfont,
+escapeend=\end{russian},
+}
+
 \lstdefinelanguage{Kotlin}{
   keywords={package, as, typealias, this, super, val, var, fun, for, null, true, false, is, in, throw, return, break, continue, object, if, try, else, while, do, when, yield, typeof, yield, typeof, class, interface, enum, object, override, public, private, get, set, import, abstract, data, inline, infix, catch},
   keywordstyle=\color{navyblue}\bfseries,
