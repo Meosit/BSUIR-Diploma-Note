@@ -1,7 +1,7 @@
 % !TeX spellcheck = russian-aot-ieyo
 % Зачем: Определяет класс документа (То, как будет выглядеть документ)
 % Примечание: параметр draft помечает строки, вышедшие за границы страницы, прямоугольником, в финальной версии его нужно удалить.
-\documentclass[a4paper,14pt,russian,oneside,draft]{extreport}
+\documentclass[a4paper,14pt,russian,oneside,final]{extreport}
 
 % Зачем: Настройка Times New Roman.
 % Рекомендовано для Windows (нужен PSCyr, подробности см. в fonts_windows.tex)
@@ -154,7 +154,7 @@
     {\fivecharsapprox\bfseries}%
     {-1em \@plus -1ex \@minus -.2ex}%
     {1em \@plus .2ex}%
-    {\raggedright\hyphenpenalty=10000\normalfont\normalsize}}
+    {\raggedright\hyphenpenalty=10000\normalfont\bfseries\normalsize}}
 \makeatother
 % Полужирным и номер, и текст заголовка (если ваша кафедра не ПОИТ)
 % \makeatletter
