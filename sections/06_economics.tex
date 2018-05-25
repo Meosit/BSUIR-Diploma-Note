@@ -126,7 +126,7 @@
 
 В качестве метрики измерения объема программных средств используется строка их исходного кода (LOC -- lines of code).
 Данная метрика широко распространена, поскольку она непосредственно связана с конечным продуктом, может применяться на всём протяжении проекта и, кроме того, может использоваться для сопоставления размеров программного обеспечения.
-Далее под строкой исходного кода будем понимать количество исполняемых операторов.
+Далее под строкой исходного кода будет пониматься количество исполняемых операторов.
 
 Расчет объема функций программного средства и общего объема приведен в таблице~\ref{table:economics:labouriousness:function_sizes}.
 
@@ -196,13 +196,13 @@
 & $ n $ & количество учитываемых характеристик.
 \end{explanation}
 
-Коэффициент $\stdmodules$, учитывающий степень использования при разработке стандартных модулей, для разрабатываемого приложения, в котором степень охвата планируется на уровне около 50\%, примем равным \num{0.7}~\cite[при\-ло\-же\-ние 4, таб\-ли\-ца П.4.5]{palitsyn}.
+Коэффициент $\stdmodules$, учитывающий степень использования при разработке стандартных модулей, для разрабатываемого приложения, в котором степень охвата планируется на уровне около 50\%, принимается равным \num{0.7}~\cite[при\-ло\-же\-ние 4, таб\-ли\-ца П.4.5]{palitsyn}.
 
-Коэффициент новизны разрабатываемого программного средства $\novelty$ примем равным \noveltyfactor, так как разрабатываемое ПС принадлежит определенному параметрическому ряду существующих программных средств~\cite[приложение 4, таблица П.4.4]{palitsyn}.
+Коэффициент новизны разрабатываемого программного средства $\novelty$ принимается равным \noveltyfactor, так как разрабатываемое ПС принадлежит определенному параметрическому ряду существующих программных средств~\cite[приложение 4, таблица П.4.4]{palitsyn}.
 
 Исходя из выбранных коэффициентов, общая трудоемкость разработки $ \totallaboriousness = \normativelaboriousness \cdot \complexity \cdot \stdmodules \cdot \novelty = \normativelaboriousnessfactor \cdot \complexityfactor \cdot \stdmodulesfactor \cdot \noveltyfactor = \totallaboriousnessfactor~\text{чел./д.}$
 
-Для расчета срока разработки проекта примем число разработчиков $\developersnumber = \developersnumberfactor$.
+Для расчета срока разработки проекта принимается число разработчиков $\developersnumber = \developersnumberfactor$.
 Исходя из комментария к постановлению Министерства труда и социальной защиты Республики Беларусь от 16 ноября 2017 года № 73 <<Об установлении расчетной нормы рабочего времени на 2018 год>>~\cite{labour_calendar}, эффективный фонд времени работы одного человека составит
 \begin{equation}
 	\effectivetimefund = \daysinyear - \holidays - \weekends - \vacationdays = \num{\daysInYear} - \num{\redLettersDaysInYear} - \num{\weekendDaysInYear} - \num{\vacationDaysInYear} = \num{\workingDaysInYear}~\text{д.},
@@ -284,7 +284,7 @@
 \end{explanation}
 
 Дополнительная заработная плата включает выплаты, предусмотренные законодательством о труде: оплата отпусков, льготных часов, времени  выполнения  государственных обязанностей и других выплат, не связанных с основной деятельностью исполнителей, и определяется по нормативу, установленному в организации, в процентах к основной заработной плате.
-Приняв данный норматив $\additionalwageratesymbol = \additionalwageratevalue$, рассчитаем дополнительные выплаты
+Приняв данный норматив $\additionalwageratesymbol = \additionalwageratevalue$, рассчитываются дополнительные выплаты
 \begin{equation}
 	\additionalwagesymbol = \frac{\basewagesymbol \cdot \additionalwageratesymbol}{100\%} = \frac{\basewagevalue \cdot \additionalwageratevalue}{100\%} = \additionalwagevalue~\byn
 \end{equation}
@@ -306,37 +306,37 @@
 \end{aligned}
 \end{equation}
 
-Расходы по статье <<Материалы>> отражают траты на магнитные носители, бумагу, красящие материалы, необходимые для разработки ПО определяются по нормативу к фонду основной заработной платы разработчиков.
-Исходя из принятого норматива $\consumablesratesymbol~=~\consumablesratevalue$ определим величину расходов
+Расходы по статье <<Материалы>> отражают затраты на магнитные носители, бумагу, красящие материалы, необходимые для разработки ПО определяются по нормативу к фонду основной заработной платы разработчиков.
+Исходя из принятого норматива $\consumablesratesymbol~=~\consumablesratevalue$ определена следующая величина расходов
 
 \begin{equation}
 	\consumableschargessymbol = \frac{\basewagesymbol \cdot \consumablesratesymbol}{100\%} = \frac{\basewagevalue \cdot \consumablesratevalue}{100\%} = \consumableschargesvalue~\byn\\[5mm]
 \end{equation}
 
 Расходы по статье <<Машинное время>> включают оплату машинного времени, необходимого для разработки и отладки ПО, которое определяется по нормативам на 100 строк исходного кода.
-Норматив зависит от характера решаемых задач и типа ПК; для текущего проекта примем $\machinetimeratesymbol~=~\machinetimeratevalue$~\cite[приложение 6]{palitsyn}.
-Примем величину стоимости машино-часа $\machinehourpricesymbol~=~\machinehourpricevalue~\byn$
-Тогда, применяя понижающий коэффициент \machinetimereductionratevalue, получим величину расходов
+Норматив зависит от характера решаемых задач и типа ПК; для текущего проекта принимается $\machinetimeratesymbol~=~\machinetimeratevalue$~\cite[приложение 6]{palitsyn}.
+Величина стоимости машино-часа принимается $\machinehourpricesymbol~=~\machinehourpricevalue~\byn$
+Тогда, применяя понижающий коэффициент \machinetimereductionratevalue, получается следующая величина расходов
 \begin{equation}
 	\machinetimechargessymbol = \machinehourpricesymbol \cdot \frac{\totalloc}{100} \cdot \machinetimeratesymbol = \machinehourpricevalue \cdot \frac{\totallocfactor}{100} \cdot \machinetimeratevalue \cdot \machinetimereductionratevalue = \machinetimechargesvalue~\byn
 \end{equation}
 
 Расходы по статье <<Научные командировки>> определяются по нормативу в процентах к основной заработной плате.
-Принимая норматив равным $\businesstripratesymbol~=~\businesstripratevalue$ получим величину расходов
+Принимая норматив равным $\businesstripratesymbol~=~\businesstripratevalue$ получается следующая величину расходов
 \begin{equation}
 	\businesstripchargessymbol = \frac{\basewagesymbol \cdot \businesstripratesymbol}{100\%} = \frac{\basewagevalue \cdot \businesstripratevalue}{100\%} = \businesstripchargesvalue~\byn
 \end{equation}
 
 Расходы по статье <<Прочие затраты>> включают затраты на приобретение и подготовку специальной научно-технической информации и специальной литературы.
 Определяются по нормативу в процентах к основной заработной плате.
-Принимая норматив равным $\otherchargesratesymbol~=~\otherchargesratevalue$ получим величину расходов
+Принимая норматив равным $\otherchargesratesymbol~=~\otherchargesratevalue$ получается следующая величина расходов
 \begin{equation}
 	\otherchargessymbol = \frac{\basewagesymbol \cdot \otherchargesratesymbol}{100\%} = \frac{\basewagevalue \cdot \otherchargesratevalue}{100\%} = \otherchargesvalue~\byn
 \end{equation}
 
 Затраты по статье <<Накладные расходы>>, связанные с необходимостью  содержания  аппарата  управления,  вспомогательных хозяйств и опытных (экспериментальных) производств, а также с расходами на общехозяйственные нужды, относятся к конкретному ПО по нормативу в процентном отношении к основной заработной плате
 исполнителей.
-Принимая норматив равным $\overheadratesymbol~=~\overheadratevalue$ получим величину расходов
+Принимая норматив равным $\overheadratesymbol~=~\overheadratevalue$ получается следующая величина расходов
 \begin{equation}
 	\overheadchargessymbol = \frac{\basewagesymbol \cdot \overheadratesymbol}{100\%} = \frac{\basewagevalue \cdot \overheadratevalue}{100\%} = \overheadvalue~\byn
 \end{equation}
@@ -356,12 +356,12 @@
 	\profitabilitysymbol = \frac{\totalchargessymbol \cdot \profitabilityratesymbol}{100\%} = \frac{\totalchargesvalue \cdot \profitabilityratevalue}{100\%} = \profitabilityvalue~\byn
 \end{equation}
 
-На основании расчета прибыли и уровня себестоимости рассчитаем прогнозируемую цену программного средства без учета налогов
+На основании расчета прибыли и уровня себестоимости рассчитывается прогнозируемая цена программного средства без учета налогов
 \begin{equation}
 	\netpricesymbol = \totalchargessymbol + \profitabilitysymbol = \totalchargesvalue + \profitabilityvalue = \netpricevalue~\byn
 \end{equation}
 
-Далее рассчитаем налог на добавленную стоимость
+Далее рассчитывается налог на добавленную стоимость
 \begin{equation}
 	\vatsymbol = \frac{\netpricesymbol \cdot \vatratesymbol}{100\%} = \frac{\netpricevalue \cdot \vatratevalue}{100\%} = \vatvalue~\byn
 \end{equation}
@@ -394,7 +394,7 @@
 Однако, если приобретенное ПО будет в достаточной степени эффективнее базового, то дополнительные капитальные затраты быстро окупятся.
 
 Для определения экономического эффекта от использования нового ПО у потребителя необходимо сравнить расходы по всем основным статьям сметы затрат на эксплуатацию нового ПО с расходами по соответствующим статьям базового варианта.
-При этом за базовый вариант примем ручной вариант.
+При этом за базовый вариант принимается ручной вариант.
 Исходные данные для расчета приведены в таблице~\ref{table:economics:effect:initial_data}.
 Размер средней зарплаты приведен на февраль 2018 г.
 
@@ -453,7 +453,7 @@
 \end{explanation}
 
 В качестве типичного примера использования разрабатываемого ПС\linebreak предполагается сценарий ее использования ежедневно $\usesperday$ раз в день, при этом предполагается снижение трудоемкости с $\baselabourisnesssymbol~=~\baselabourisnessvalue~\manhour$ до\\ $\newlabourisnesssymbol~=~\newlabourisnessvalue~\manhour$.
-Приняв среднемесячную заработную плату работника\linebreak $\averagewagesymbol~=~\averagewagevalue~\byn$, рассчитаем экономию затрат на заработную плату в расчете на одну задачу $\wageeconomypertasksymbol$ и за год $\wageeconomysymbol$
+Приняв среднемесячную заработную плату работника\linebreak $\averagewagesymbol~=~\averagewagevalue~\byn$, рассчитывается экономия затрат на заработную плату в расчете на одну задачу $\wageeconomypertasksymbol$ и за год $\wageeconomysymbol$
 \begin{equation}
 	\wageeconomypertasksymbol = \frac{\averagewagesymbol \cdot (\baselabourisnesssymbol - \newlabourisnesssymbol)}{\averagehourspermonthsymbol} = \frac{\averagewagevalue \cdot (\baselabourisnessvalue - \newlabourisnessvalue)}{\averagehourspermonthvalue} = \wageeconomypertaskvalue~\byn,
 \end{equation}
